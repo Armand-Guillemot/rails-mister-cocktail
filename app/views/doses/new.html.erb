@@ -1,5 +1,16 @@
-<h1>New Dose</h1>
-
-<%= render 'form', dose: @dose %>
-
-<%= link_to 'Back', doses_path %>
+<div class="container jumbotron">
+  <h1>New Dose</h1>
+  <%= simple_form_for([@cocktail, @dose]) do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+    <div class="form-inputs">
+      <%= f.association :ingredient %>
+      <%= f.input :description %>
+      <%= f.input :cocktail, as: :hidden %>
+    </div>
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
+  <% end %>
+  <%= link_to 'Back', cocktails_path %>
+</div>

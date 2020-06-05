@@ -1,4 +1,11 @@
 <p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_cocktail_path(@cocktail) %> |
-<%= link_to 'Back', cocktails_path %>
+<div class="container jumbotron">
+  <h2><%= @cocktail.name %></h2>
+  <i class="fas fa-cog"></i>
+  <hr>
+  <br>
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <%= link_to 'Back', cocktails_path,class: "btn btn-secondary" %>
+    <%= link_to 'Edit', edit_cocktail_path(@cocktail), class: "btn btn-secondary" %>
+  </div>
+</div>

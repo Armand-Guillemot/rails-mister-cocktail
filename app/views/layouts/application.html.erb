@@ -1,18 +1,32 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>RailsMisterCocktail</title>
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
-
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-</head>
-
-<body>
-  <%= yield %>
-</body>
+  <head>
+    <title>RailsMisterCocktail</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-between">
+      <div class="d-flex align-items-center">
+        <a class="navbar-brand" href="#"><i style="font-size:42px;" class="fab fa-reddit"></i></a>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" style="font-size:23px;" href="javascript:void(0)">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link border-bottom rounded" href="javascript:void(0)" style="font-size:23px;">News</a>
+          </li>
+        </ul>
+      </div>
+      <form class="form-inline" action="/action_page.php">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+        <button class="btn btn-success" type="submit">Search</button>
+      </form>
+    </nav>
+    <%= yield %>
+  </body>
 </html>

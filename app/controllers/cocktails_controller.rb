@@ -28,7 +28,7 @@ class CocktailsController < ApplicationController
 
     respond_to do |format|
       if @cocktail.save
-        format.html { redirect_to @cocktail, notice: 'Cocktail was successfully created.' }
+        format.html { redirect_to cocktails_path, notice: 'Cocktail was successfully created.' }
         format.json { render :show, status: :created, location: @cocktail }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class CocktailsController < ApplicationController
   def update
     respond_to do |format|
       if @cocktail.update(cocktail_params)
-        format.html { redirect_to @cocktail, notice: 'Cocktail was successfully updated.' }
+        format.html { redirect_to cocktails_path, notice: 'Cocktail was successfully updated.' }
         format.json { render :show, status: :ok, location: @cocktail }
       else
         format.html { render :edit }
@@ -62,13 +62,13 @@ class CocktailsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_cocktail
-      @cocktail = Cocktail.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_cocktail
+    @cocktail = Cocktail.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def cocktail_params
-      params.fetch(:cocktail, {})
-    end
+  # Only allow a list of trusted parameters through.
+  def cocktail_params
+    params.require(:cocktail).permit(:name)
+  end
 end
