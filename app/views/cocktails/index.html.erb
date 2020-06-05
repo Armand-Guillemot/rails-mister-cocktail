@@ -2,6 +2,8 @@
   <button type="button" class="close" data-dismiss="alert">×</button>
 </p>
 <div class="container jumbotron py-3">
+  <%= cl_image_tag("obnfz2qnsqfrtmqf1amk",
+      width: 400, height: 300, crop: :fill, gravity: :face) %>
   <div class="d-flex align-items-center justify-content-between">
     <h1 class="mb-0 display-4">Cocktails</h1>
     <%= link_to 'New Cocktail', new_cocktail_path, class: "btn btn-primary sticky-top" %>
@@ -15,6 +17,7 @@
         <!-- Content -->
         <div class="d-flex align-items-center justify-content-between bg-dark p-2 rounded">
           <div class="d-flex align-items-center justify-content-start">
+            <%= cl_image_tag cocktail.photo.key, height: 45, width: 45, class: 'rounded-circle mr-2 border border-light shadow' %>
             <h5 class="mb-0"><%= link_to cocktail.name, cocktail, class: "text-light" %></h5>
             <%= link_to "#demo", class: "btn btn-dark square d-flex ml-1 align-items-center text-center", :'data-toggle' => "collapse" do %>
               <i class="fas fa-angle-down"></i>
