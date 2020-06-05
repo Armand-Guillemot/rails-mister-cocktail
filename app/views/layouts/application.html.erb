@@ -22,10 +22,21 @@
           </li>
         </ul>
       </div>
-      <form class="form-inline" action="/action_page.php">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search">
-        <button class="btn btn-success" type="submit">Search</button>
-      </form>
+      <% if user_signed_in? %>
+        <div class="dropdown show">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= current_user.email %>
+          </button>
+          <div class="dropdown-menu">
+            <%= link_to "Dashboard", dashboard_path(current_user), class: "dropdown-item" %>
+            <%= link_to "Edit Profile", edit_user_registration_path, class: "dropdown-item" %>
+            <div class="dropdown-divider"></div>
+            <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+          </div>
+        </div>
+      <% else %>
+        <%= link_to "Log in", new_user_session_path %>
+      <% end %>
     </nav>
     <%= yield %>
   </body>
